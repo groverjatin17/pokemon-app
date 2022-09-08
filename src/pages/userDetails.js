@@ -1,10 +1,9 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 import { FormSpy } from "react-final-form";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createPersistDecorator } from "final-form-persist";
 import { UPDATE_FORM_STATE } from "../redux/reduxForm";
-import { selectForm } from "../redux/reduxForm";
 
 const FormStateToRedux = ({ form }) => {
   const dispatch = useDispatch();
@@ -17,15 +16,11 @@ const FormStateToRedux = ({ form }) => {
 
 const FormStateFromRedux = ({ form }) => {};
 
-// const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
 const onSubmit = async (values) => {
-  // await sleep(300);
-  // window.alert(JSON.stringify(values, 0, 2));
 };
 
 const MyForm = () => {
-  const { persistDecorator, clear } = createPersistDecorator({
+  const { persistDecorator } = createPersistDecorator({
     name: "myPersistKey",
     debounceTime: 500,
     whitelist: ["firstName", "lastName", "phoneNumber", "address"],
@@ -37,12 +32,6 @@ const MyForm = () => {
       <Form
         decorators={[persistDecorator]}
         onSubmit={onSubmit}
-        initialValues={{
-          firstName: "Phudit",
-          lastName: "Bleh",
-          phoneNumber: 18,
-          address: "bleh street",
-        }}
         subscription={{ submitting: true, pristine: true }}
       >
         {({ handleSubmit, form, submitting, pristine }) => (

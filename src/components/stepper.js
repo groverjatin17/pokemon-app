@@ -14,7 +14,6 @@ export default function HorizontalLinearStepper({
   activeStep,
   setActiveStep,
 }) {
-  // const [activeStep, setActiveStep] = React.useState(0);
   const [bookmarked, setBookmarked] = React.useState(new Set());
 
   const { selectedPokemon } = useSelector((state) => state.pokemonData);
@@ -58,8 +57,6 @@ export default function HorizontalLinearStepper({
 
   const handleBookmark = () => {
     if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
       throw new Error("You can't bookmark a step that isn't optional.");
     }
 
